@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Anta&display=swap');
+
+* {
+    margin: 0;
+}
+
+body {
+    font-family: "Anta", sans-serif;
+    color: white;
+    background-color: #1e1d2b;
+}
+
+.container {
+    padding: 45px;
+}
+
+.title {
+    display: grid;
+    grid-template-columns: 1fr 7fr;
+    gap: 10px;
+}
+
+.title__img {
+    width: 8rem;
+    border-radius: 100%;
+}
+
+.title__text {
+    display: flex;
+    font-size: 3.5rem;
+    align-items: center;
+}
+
+.hero {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.hero__card {
+    display: grid;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.hero__picture {
+    width: 100%;
+    border-radius:5px;
+}
+
+.hero__body {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+    gap: 5px;
+    font-size: larger;
+}
+
+.hero__button {
+    background-color: red;
+    font-weight: bold;
+    font-family: "Anta", sans-serif;
+    font-size: 1rem;
+    width: 30%;
+}
+
+@media (max-width: 1024px) {
+    .hero--small {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .title--logo {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .title__text--disappear {
+        display: none;
+    }
+    .title__img--center {
+        display: flex;
+        align-self: center;
+        justify-self: center;
+    }
+}
+
+@media (max-width: 593px) {
+    .hero--small {
+        display: grid;
+        grid-template-columns: 1fr
+    }
+    .title--logo {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .title__text--disappear {
+        display: none;
+    }
+    .title__img--center {
+        display: flex;
+        align-self: center;
+        justify-self: center;
+    }
+}
