@@ -34,7 +34,7 @@ body {
 .hero {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+    gap: 15px;
 }
 
 .hero__card {
@@ -57,11 +57,18 @@ body {
 }
 
 .hero__button {
-    background-color: red;
     font-weight: bold;
     font-family: "Anta", sans-serif;
     font-size: 1rem;
     width: 30%;
+}
+
+.red {
+    background-color: #F21D2F;
+}
+
+.blue {
+    background-color: #0583F2;
 }
 
 @media (max-width: 1024px) {
