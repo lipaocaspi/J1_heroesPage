@@ -109,14 +109,19 @@ body {
     font-weight: bolder;
 }
 
+.dialog__close {
+    display: flex;
+    justify-content: end;
+}
+
 .dialog__button {
     font-family: "Anta", sans-serif;
     font-size: large;
     font-weight: bold;
-    background-color: gray;
     width: 25%;
     height: 40px;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 @media (max-width: 1024px) {

@@ -115,7 +115,7 @@ const heroes = [
         "id": "15",
         "category": "marvel",
         "about": "Wade Wilson, también conocido como Deadpool, es un mercenario con habilidades de curación acelerada y un sentido del humor irreverente. Es conocido por romper la cuarta pared y por sus aventuras llenas de acción y comedia.",
-        "picture": "https://e.rpp-noticias.io/xlarge/2020/05/18/345934_943539.jpg",
+        "picture": "https://i.blogs.es/185894/deadpool/840_560.jpeg",
         "name": "Deadpool",
         "date": "1991"
     },
@@ -234,7 +234,7 @@ const heroes = [
     {
         "id": "30",
         "category": "dc",
-        "about": "Raven es una poderosa hechicera. Posee habilidades para manipular la energía oscura y el poder del alma, lo que le permite realizar hechizos y proyectar emociones en forma de energía. A pesar de su herencia demoníaca, lucha constantemente contra su lado oscuro y busca redimirse ayudando a los demás. Su personalidad es reservada y tranquila, y se destaca por su inteligencia y sabiduría.",
+        "about": "Raven es una poderosa hechicera. Posee habilidades para manipular la energía oscura y el poder del alma, lo que le permite realizar hechizos y proyectar emociones en forma de energía. Su personalidad es reservada y tranquila, y se destaca por su inteligencia y sabiduría.",
         "picture": "https://i.ytimg.com/vi/BJwHetjZMQY/maxresdefault.jpg",
         "name": "Raven",
         "date": "1980"
@@ -274,7 +274,9 @@ const showDialog = (id) => {
     <br>
     <p class="dialog__date">${heroe.date}</p>
     <br>
+    <div class="dialog__close">
     <button onclick="dialog.close()" class="dialog__button">Regresar</button>
+    </div>
     `;
     dialog.showModal();
 }
