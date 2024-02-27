@@ -79,6 +79,46 @@ body {
     background-color: #0583F2;
 }
 
+.dialog {
+    padding: 3%;
+    max-width: 600px;
+    background-color: #d9d9d9;
+    margin: auto;
+}
+
+.dialog__title {
+    font-size: 4rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.dialog__picture {
+    display: flex;
+    justify-content: center;
+    padding: 5%;
+    width: 90%;
+}
+
+.dialog__desc {
+    font-size: 1.3rem;
+    text-align: justify;
+}
+
+.dialog__date {
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+
+.dialog__button {
+    font-family: "Anta", sans-serif;
+    font-size: large;
+    font-weight: bold;
+    background-color: gray;
+    width: 25%;
+    height: 40px;
+    border-radius: 5px;
+}
+
 @media (max-width: 1024px) {
     .hero--small {
         display: grid;
