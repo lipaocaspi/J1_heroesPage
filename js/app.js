@@ -214,29 +214,22 @@ const heroesDC = [
     }
 ]
 
+const createCard = (heroes, heroeHTML, color) => {
+    for (heroe of heroes) {
+        heroeHTML.innerHTML += `
+        <div class="hero__card">
+            <img class="hero__picture" src=${heroe.picture} alt="">
+            <div class="hero__body">
+                <div class="hero__name">${heroe.name}</div>
+                <button class="hero__button ${color}">Ver</button>
+            </div>
+        </div>
+        `
+    }
+}
+
 const heroeMarvel = document.querySelector('.hero.marvel');
 const heroeDC = document.querySelector('.hero.dc');
 
-for (heroeM of heroesMarvel) {
-    heroeMarvel.innerHTML += `
-    <div class="hero__card">
-        <img class="hero__picture" src=${heroeM.picture} alt="">
-        <div class="hero__body">
-            <div class="hero__name">${heroeM.name}</div>
-            <button class="hero__button red">Ver</button>
-        </div>
-    </div>
-    `
-}
-
-for (heroeD of heroesDC) {
-    heroeDC.innerHTML += `
-    <div class="hero__card">
-        <img class="hero__picture" src=${heroeD.picture} alt="">
-        <div class="hero__body">
-            <div class="hero__name">${heroeD.name}</div>
-            <button class="hero__button blue">Ver</button>
-        </div>
-    </div>
-    `
-}
+createCard(heroesMarvel, heroeMarvel, "red");
+createCard(heroesDC, heroeDC, "blue");
