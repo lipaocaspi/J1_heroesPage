@@ -122,7 +122,7 @@ const heroes = [
     {
         "id": "16",
         "category": "dc",
-        "about": "Clark Kent, también conocido como Superman, es un extraterrestre de Krypton que posee una variedad de habilidades sobrehumanas, incluida la fuerza, la velocidad y la capacidad de volar. Es uno de los superhéroes más icónicos y representa la verdad, la justicia y el estilo de vida estadounidense.",
+        "about": "Clark Kent, también conocido como Superman, es un extraterrestre de Krypton que posee una variedad de habilidades sobrehumanas, incluida la fuerza, la velocidad y la capacidad de volar.",
         "picture": "https://s1.eestatic.com/2022/12/15/series/cine/726187515_229497619_1706x960.jpg",
         "name": "Superman",
         "date": "1938"
@@ -130,7 +130,7 @@ const heroes = [
     {
         "id": "17",
         "category": "dc",
-        "about": "Bruce Wayne, también conocido como Batman, es un multimillonario que se convierte en un vigilante enmascarado para luchar contra el crimen en Gotham City después de presenciar el asesinato de sus padres cuando era niño. Es conocido por su inteligencia, habilidades de combate y arsenal de tecnología avanzada.",
+        "about": "Bruce Wayne, también conocido como Batman, es un multimillonario que se convierte en un vigilante enmascarado para luchar contra el crimen en Gotham City después de presenciar el asesinato de sus padres cuando era niño.",
         "picture": "https://img2.rtve.es/i/?w=1600&i=1634549481092.jpg",
         "name": "Batman",
         "date": "1939"
@@ -278,5 +278,12 @@ const showDialog = (id) => {
     <button onclick="dialog.close()" class="dialog__button">Regresar</button>
     </div>
     `;
+    const dialogButton = document.querySelector('.dialog__button');
+    if (heroe.category == "marvel") {
+        dialogButton.classList.add('red');
+    }
+    else {
+        dialogButton.classList.add('blue');
+    }
     dialog.showModal();
 }
