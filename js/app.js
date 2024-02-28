@@ -258,6 +258,8 @@ const createCard = (heroes, category, heroeHTML, color) => {
     }
 }
 
+const marvelTitle = document.querySelector('#marvel-title');
+const dcTitle = document.querySelector('#dc-title');
 const heroeMarvel = document.querySelector('.hero.marvel');
 const heroeDC = document.querySelector('.hero.dc');
 const dialog = document.querySelector('.dialog');
@@ -286,4 +288,31 @@ const showDialog = (id) => {
         dialogButton.classList.add('blue');
     }
     dialog.showModal();
+}
+
+document.getElementById('filter').addEventListener('change', function() {
+    let filter = this.value;
+    marvelTitle.style.display = 'grid';
+    heroeMarvel.style.display = 'grid';
+    dcTitle.style.display = 'grid';
+    heroeDC.style.display = 'grid';
+    let heroesFiltered = heroes.filter(function(heroe) {
+        switch(filter) {
+            case 'all':
+                return true;
+            case 'marvel':
+                dcTitle.style.display = 'none';
+                heroeDC.style.display = 'none';
+                return heroe.category == "marvel";
+            case 'dc':
+                marvelTitle.style.display = 'none';
+                heroeMarvel.style.display = 'none';
+                return heroe.category == "dc";
+        }
+    });
+    showHeroes(heroesFiltered);
+});
+
+const showHeroes = (heroes) => {
+    console.log(heroes);
 }

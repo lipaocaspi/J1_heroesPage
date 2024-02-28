@@ -14,10 +14,44 @@ body {
     padding: 60px;
 }
 
+.filter {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr) 0.5fr;
+    gap: 10px;
+}
+
+.filter__select {
+    display: flex;
+    background-color: #f2f2f2;
+    color: #333;
+    font-size: 16px;
+    font-family: "Anta", sans-serif;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.filter__select:focus {
+    border-color: #007bff;
+}
+
+.filter__input {
+    display: flex;
+    border-radius: 10px;
+}
+
+.filter__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .title {
     display: grid;
     grid-template-columns: 1fr 7fr;
     gap: 10px;
+    padding: 25px;
 }
 
 .title__img {
@@ -84,7 +118,6 @@ body {
     max-width: 600px;
     background-color: #d9d9d9;
     margin: auto;
-    overflow: scroll;
 }
 
 .dialog__title {
@@ -145,6 +178,14 @@ body {
 }
 
 @media (max-width: 593px) {
+    .filter--small {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column: 1/ span 2;
+    }
+    .filter__select {
+        grid-column: 1 / span 2;
+    }
     .hero--small {
         display: grid;
         grid-template-columns: 1fr

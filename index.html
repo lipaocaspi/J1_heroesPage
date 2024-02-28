@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="css/style.css">
     <script src="js/app.js" defer></script>
     <title>HEROES</title>
@@ -10,22 +11,30 @@
 <body>
     <main>
         <div class="container">
-            <div class="title title--logo">
+            <div class="filter filter--small">
+                <select class="filter__select" id="filter">
+                    <option value="all">ALL</option>
+                    <option value="marvel">MARVEL</option>
+                    <option value="dc">DC</option>
+                </select>
+                <input class="filter__input" type="search" name="" id="">
+                <button class="filter__button">
+                    <i class='bx bx-search-alt-2 bx-sm'></i>
+                </button>
+            </div>
+            <div class="title title--logo" id="marvel-title">
                 <div class="title__img title__img--center">
                     <a href="https://www.marvel.com/" target="_blank" title="MARVEL"><img class="title__img" src="images/marvelLogo.jpg" alt="Marvel"></a>
                 </div>
                 <div class="title__text title__text--disappear">MARVEL</div>
             </div>
-            <br>
             <div class="hero marvel hero--small"></div>
-            <br><br>
-            <div class="title title--logo">
+            <div class="title title--logo" id="dc-title">
                 <div class="title__img title__img--center">
                     <a href="https://www.dc.com/" target="_blank" title="DC"><img class="title__img" src="images/DCLogo.png" alt="DC"></a>
                 </div>
                 <div class="title__text title__text--disappear">DC</div>
             </div>
-            <br>
             <div class="hero dc hero--small"></div>
         </div>
         <dialog class="dialog"></dialog>
