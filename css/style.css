@@ -38,7 +38,7 @@ body {
 
 .filter__input {
     display: flex;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .filter__button {
@@ -181,7 +181,6 @@ body {
     .filter--small {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        grid-column: 1/ span 2;
     }
     .filter__select {
         grid-column: 1 / span 2;

@@ -241,6 +241,12 @@ const heroes = [
     }
 ]
 
+const marvelTitle = document.querySelector('#marvel-title');
+const dcTitle = document.querySelector('#dc-title');
+const heroeMarvel = document.querySelector('.hero.marvel');
+const heroeDC = document.querySelector('.hero.dc');
+const dialog = document.querySelector('.dialog');
+
 const createCard = (heroes, category, heroeHTML, color) => {
     let heroesF = heroes.filter(function(heroe) {
         return heroe.category == category;
@@ -257,12 +263,6 @@ const createCard = (heroes, category, heroeHTML, color) => {
         `;
     }
 }
-
-const marvelTitle = document.querySelector('#marvel-title');
-const dcTitle = document.querySelector('#dc-title');
-const heroeMarvel = document.querySelector('.hero.marvel');
-const heroeDC = document.querySelector('.hero.dc');
-const dialog = document.querySelector('.dialog');
 
 createCard(heroes, "marvel", heroeMarvel, "red");
 createCard(heroes, "dc", heroeDC, "blue");
@@ -310,9 +310,9 @@ document.getElementById('filter').addEventListener('change', function() {
                 return heroe.category == "dc";
         }
     });
-    showHeroes(heroesFiltered);
+    // showHeroes(heroesFiltered);
 });
 
-const showHeroes = (heroes) => {
+/* const showHeroes = (heroes) => {
     console.log(heroes);
-}
+} */
