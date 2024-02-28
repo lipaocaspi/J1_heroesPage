@@ -84,6 +84,7 @@ body {
     max-width: 600px;
     background-color: #d9d9d9;
     margin: auto;
+    overflow: scroll;
 }
 
 .dialog__title {
@@ -100,7 +101,7 @@ body {
 }
 
 .dialog__desc {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     text-align: justify;
 }
 
