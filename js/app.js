@@ -241,6 +241,7 @@ const heroes = [
     }
 ]
 
+const cardsBody = document.querySelector('.body');
 const marvelTitle = document.querySelector('#marvel-title');
 const dcTitle = document.querySelector('#dc-title');
 const heroeMarvel = document.querySelector('.hero.marvel');
@@ -288,28 +289,22 @@ const showDialog = (id) => {
         dialogButton.classList.add('blue');
     }
     dialog.showModal();
-}
+};
 
 document.getElementById('filter').addEventListener('change', function() {
     let filter = this.value;
-    marvelTitle.style.display = 'grid';
-    heroeMarvel.style.display = 'grid';
-    dcTitle.style.display = 'grid';
-    heroeDC.style.display = 'grid';
-    let heroesFiltered = heroes.filter(function(heroe) {
-        switch(filter) {
-            case 'all':
-                return true;
-            case 'marvel':
-                dcTitle.style.display = 'none';
-                heroeDC.style.display = 'none';
-                return heroe.category == "marvel";
-            case 'dc':
-                marvelTitle.style.display = 'none';
-                heroeMarvel.style.display = 'none';
-                return heroe.category == "dc";
-        }
-    });
+    switch(filter) {
+        case 'all':
+            createCard(heroes, "marvel", heroeMarvel, "red");
+            createCard(heroes, "dc", heroeDC, "blue");
+            break;
+        case 'marvel':
+            createCard(heroes, "marvel", heroeMarvel, "red");
+            break;
+        case 'dc':
+            createCard(heroes, "dc", heroeDC, "blue");
+            break;
+    }
     // showHeroes(heroesFiltered);
 });
 
