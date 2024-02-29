@@ -241,7 +241,8 @@ const heroes = [
     }
 ]
 
-const cardsBody = document.querySelector('.body');
+const filterInput = document.querySelector('.filter__input');
+const filterButton = document.querySelector('.filter__button');
 const marvelTitle = document.querySelector('#marvel-title');
 const dcTitle = document.querySelector('#dc-title');
 const heroeMarvel = document.querySelector('.hero.marvel');
@@ -291,23 +292,35 @@ const showDialog = (id) => {
     dialog.showModal();
 };
 
+const showBody = () => {
+    marvelTitle.style.display = 'grid';
+    heroeMarvel.style.display = 'grid';
+    dcTitle.style.display = 'grid';
+    heroeDC.style.display = 'grid';
+}
+
 document.getElementById('filter').addEventListener('change', function() {
     let filter = this.value;
-    switch(filter) {
-        case 'all':
-            createCard(heroes, "marvel", heroeMarvel, "red");
-            createCard(heroes, "dc", heroeDC, "blue");
-            break;
-        case 'marvel':
-            createCard(heroes, "marvel", heroeMarvel, "red");
-            break;
-        case 'dc':
-            createCard(heroes, "dc", heroeDC, "blue");
-            break;
-    }
-    // showHeroes(heroesFiltered);
+    showBody();
+    let heroesFiltered = heroes.filter(function(heroe) {
+        switch(filter) {
+            default:
+                return heroes;
+            case 'marvel':
+                dcTitle.style.display = 'none';
+                heroeDC.style.display = 'none';
+                return heroe.category == "marvel";
+            case 'dc':
+                marvelTitle.style.display = 'none';
+                heroeMarvel.style.display = 'none';
+                return heroe.category == "dc";
+        }
+    });
+    filterButton.addEventListener('click', function() {
+        let filterValue = filterInput.value.toLowerCase();
+        let result = heroesFiltered.filter(function(hero) {
+            return hero.name.toLowerCase().includes(filterValue);
+        });
+        console.log(result);
+    });
 });
-
-/* const showHeroes = (heroes) => {
-    console.log(heroes);
-} */
