@@ -241,12 +241,11 @@ const heroes = [
     }
 ]
 
-const filterInput = document.querySelector('.filter__input');
-const filterButton = document.querySelector('.filter__button');
 const marvelTitle = document.querySelector('#marvel-title');
 const dcTitle = document.querySelector('#dc-title');
 const heroeMarvel = document.querySelector('.hero.marvel');
 const heroeDC = document.querySelector('.hero.dc');
+const heroCard = document.querySelector('.hero__card')
 const dialog = document.querySelector('.dialog');
 
 const createCard = (heroes, category, heroeHTML, color) => {
@@ -299,34 +298,73 @@ const showBody = () => {
     heroeDC.style.display = 'grid';
 };
 
-const filterByButton = (filteredElements) => {
-    let filterValue = filterInput.value.toLowerCase();
-    let result = filteredElements.filter(function(hero) {
-        return hero.name.toLowerCase().includes(filterValue);
+const filterList = () => {
+    let result = [];
+    let filterSelect = document.getElementById('filter').value;
+    console.log(filterSelect);
+    let filterInput = document.querySelector('.filter__input').value.toLowerCase();
+    result = heroes.filter(function(hero) {
+        if (filterSelect === 'all' || filterSelect === hero.category) {
+            return hero.name.toLowerCase().includes(filterInput);
+        }
+        return false;
     });
-    console.log(result);
+    // console.log(result);
+    showResults(filterSelect, filterInput, result);
 }
 
-const filterSelect = document.getElementById('filter');
+document.querySelector('.filter__select').addEventListener('change', filterList);
+document.querySelector('.filter__button').addEventListener('click', filterList);
 
-filterSelect.addEventListener('change', function() {
-    let filter = this.value;
-    showBody();
-    let heroesFiltered = [];
-    if (filter == 'all') {
-        heroesFiltered = heroes;
+const createFilteredCards = (htmlElement, array) => {
+    htmlElement.innerHTML = ``;
+    for (element of array) {
+        htmlElement.innerHTML += `
+        <div class="hero__card">
+            <img class="hero__picture" src=${element.picture} alt="">
+            <div class="hero__body">
+                <div class="hero__name">${element.name}</div>
+                <button onclick="showDialog(${element.id})" class="hero__button">Ver</button>
+            </div>
+        </div>
+        `;
     }
-    else if (filter == 'marvel') {
+    console.log(htmlElement);
+}
+
+const showResults = (valueSelect, valueInput, filteredArray) => {
+    if (valueSelect == 'all') {
+        if (valueInput == '') {
+            showBody();
+        } else {
+            createFilteredCards(heroeMarvel, filteredArray);
+            createFilteredCards(heroeDC, filteredArray);
+            marvelTitle.style.display = 'grid';
+            heroeMarvel.style.display = 'grid';
+            dcTitle.style.display = 'grid';
+            heroeDC.style.display = 'grid';
+        }
+    }
+    else if (valueSelect == 'marvel') {
+        if (valueInput == '') {
+            showBody();
+        } else {
+            marvelTitle.style.display = 'grid';
+            heroeMarvel.style.display = 'grid';
+            createFilteredCards(heroeMarvel, filteredArray);
+        }
         dcTitle.style.display = 'none';
         heroeDC.style.display = 'none';
-        heroesFiltered = heroes.filter((hero) => hero.category == 'marvel');
     }
-    else if (filter == 'dc') {
+    else if (valueSelect == 'dc') {
+        if (valueInput == '') {
+            showBody();
+        } else {
+            dcTitle.style.display = 'grid';
+            heroeDC.style.display = 'grid';
+            createFilteredCards(heroeDC, filteredArray);
+        }
         marvelTitle.style.display = 'none';
         heroeMarvel.style.display = 'none';
-        heroesFiltered = heroes.filter((hero) => hero.category == 'dc');
     }
-    filterButton.addEventListener('click', filterByButton(heroesFiltered));
-});
-
-// 
+}
