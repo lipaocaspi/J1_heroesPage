@@ -291,32 +291,33 @@ const showDialog = (id) => {
     dialog.showModal();
 };
 
-const showBody = () => {
-    marvelTitle.style.display = 'grid';
-    heroeMarvel.style.display = 'grid';
-    dcTitle.style.display = 'grid';
-    heroeDC.style.display = 'grid';
-};
-
 const filterList = () => {
+    heroeMarvel.innerHTML = ``;
+    heroeDC.innerHTML = ``;
+    createCard(heroes, "marvel", heroeMarvel, "red");
+    createCard(heroes, "dc", heroeDC, "blue");
     let result = [];
     let filterSelect = document.getElementById('filter').value;
-    console.log(filterSelect);
-    let filterInput = document.querySelector('.filter__input').value.toLowerCase();
+    filterInput = document.querySelector('.filter__input').value.toLowerCase();
     result = heroes.filter(function(hero) {
         if (filterSelect === 'all' || filterSelect === hero.category) {
             return hero.name.toLowerCase().includes(filterInput);
         }
         return false;
     });
-    // console.log(result);
-    showResults(filterSelect, filterInput, result);
-}
+    resultMarvel = result.filter(function(heroMarvel) {
+        return heroMarvel.category == 'marvel';
+    });
+    resultDC = result.filter(function(heroDC) {
+        return heroDC.category == 'dc';
+    });
+    showResults(filterSelect, filterInput, result, resultMarvel, resultDC);
+};
 
 document.querySelector('.filter__select').addEventListener('change', filterList);
 document.querySelector('.filter__button').addEventListener('click', filterList);
 
-const createFilteredCards = (htmlElement, array) => {
+const createFilteredCards = (htmlElement, array, color) => {
     htmlElement.innerHTML = ``;
     for (element of array) {
         htmlElement.innerHTML += `
@@ -324,34 +325,37 @@ const createFilteredCards = (htmlElement, array) => {
             <img class="hero__picture" src=${element.picture} alt="">
             <div class="hero__body">
                 <div class="hero__name">${element.name}</div>
-                <button onclick="showDialog(${element.id})" class="hero__button">Ver</button>
+                <button onclick="showDialog(${element.id})" class="hero__button ${color}">Ver</button>
             </div>
         </div>
         `;
     }
-    console.log(htmlElement);
-}
+};
 
-const showResults = (valueSelect, valueInput, filteredArray) => {
+const showBody = () => {
+    marvelTitle.style.display = 'grid';
+    heroeMarvel.style.display = 'grid';
+    dcTitle.style.display = 'grid';
+    heroeDC.style.display = 'grid';
+};
+
+const showResults = (valueSelect, valueInput, filteredArray, filteredArrayM, filteredArrayD) => {
     if (valueSelect == 'all') {
         if (valueInput == '') {
             showBody();
         } else {
-            createFilteredCards(heroeMarvel, filteredArray);
-            createFilteredCards(heroeDC, filteredArray);
-            marvelTitle.style.display = 'grid';
-            heroeMarvel.style.display = 'grid';
-            dcTitle.style.display = 'grid';
-            heroeDC.style.display = 'grid';
+            createFilteredCards(heroeMarvel, filteredArrayM, "red");
+            createFilteredCards(heroeDC, filteredArrayD, "blue");
+            showBody();
         }
     }
     else if (valueSelect == 'marvel') {
         if (valueInput == '') {
             showBody();
         } else {
+            createFilteredCards(heroeMarvel, filteredArray, "red");
             marvelTitle.style.display = 'grid';
             heroeMarvel.style.display = 'grid';
-            createFilteredCards(heroeMarvel, filteredArray);
         }
         dcTitle.style.display = 'none';
         heroeDC.style.display = 'none';
@@ -360,9 +364,9 @@ const showResults = (valueSelect, valueInput, filteredArray) => {
         if (valueInput == '') {
             showBody();
         } else {
+            createFilteredCards(heroeDC, filteredArray, "blue");
             dcTitle.style.display = 'grid';
             heroeDC.style.display = 'grid';
-            createFilteredCards(heroeDC, filteredArray);
         }
         marvelTitle.style.display = 'none';
         heroeMarvel.style.display = 'none';
