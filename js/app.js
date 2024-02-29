@@ -297,30 +297,36 @@ const showBody = () => {
     heroeMarvel.style.display = 'grid';
     dcTitle.style.display = 'grid';
     heroeDC.style.display = 'grid';
+};
+
+const filterByButton = (filteredElements) => {
+    let filterValue = filterInput.value.toLowerCase();
+    let result = filteredElements.filter(function(hero) {
+        return hero.name.toLowerCase().includes(filterValue);
+    });
+    console.log(result);
 }
 
-document.getElementById('filter').addEventListener('change', function() {
+const filterSelect = document.getElementById('filter');
+
+filterSelect.addEventListener('change', function() {
     let filter = this.value;
     showBody();
-    let heroesFiltered = heroes.filter(function(heroe) {
-        switch(filter) {
-            default:
-                return heroes;
-            case 'marvel':
-                dcTitle.style.display = 'none';
-                heroeDC.style.display = 'none';
-                return heroe.category == "marvel";
-            case 'dc':
-                marvelTitle.style.display = 'none';
-                heroeMarvel.style.display = 'none';
-                return heroe.category == "dc";
-        }
-    });
-    filterButton.addEventListener('click', function() {
-        let filterValue = filterInput.value.toLowerCase();
-        let result = heroesFiltered.filter(function(hero) {
-            return hero.name.toLowerCase().includes(filterValue);
-        });
-        console.log(result);
-    });
+    let heroesFiltered = [];
+    if (filter == 'all') {
+        heroesFiltered = heroes;
+    }
+    else if (filter == 'marvel') {
+        dcTitle.style.display = 'none';
+        heroeDC.style.display = 'none';
+        heroesFiltered = heroes.filter((hero) => hero.category == 'marvel');
+    }
+    else if (filter == 'dc') {
+        marvelTitle.style.display = 'none';
+        heroeMarvel.style.display = 'none';
+        heroesFiltered = heroes.filter((hero) => hero.category == 'dc');
+    }
+    filterButton.addEventListener('click', filterByButton(heroesFiltered));
 });
+
+// 
