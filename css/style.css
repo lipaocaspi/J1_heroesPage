@@ -16,7 +16,7 @@ body {
 
 .filter {
     display: grid;
-    grid-template-columns: repeat(2, 1fr) 0.5fr;
+    grid-template-columns: repeat(2, 2fr) 0.5fr;
     gap: 10px;
 }
 
@@ -89,6 +89,11 @@ body {
     border-radius:5px;
 }
 
+.hero__desc {
+    text-align: justify;
+    padding: 15px;
+}
+
 .hero__body {
     display: flex;
     justify-content: space-around;
@@ -111,6 +116,10 @@ body {
 
 .blue {
     background-color: #0583F2;
+}
+
+.large {
+    font-size: large;
 }
 
 .dialog {

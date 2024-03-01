@@ -317,26 +317,27 @@ const filterList = () => {
 document.querySelector('.filter__select').addEventListener('change', filterList);
 document.querySelector('.filter__button').addEventListener('click', filterList);
 
+const showBody = () => {
+    marvelTitle.style.display = 'grid';
+    heroeMarvel.style.display = 'grid';
+    dcTitle.style.display = 'grid';
+    heroeDC.style.display = 'grid';
+};
+
 const createFilteredCards = (htmlElement, array, color) => {
     htmlElement.innerHTML = ``;
     for (element of array) {
         htmlElement.innerHTML += `
         <div class="hero__card">
             <img class="hero__picture" src=${element.picture} alt="">
+            <div class="hero__desc">${element.about}</div>
             <div class="hero__body">
-                <div class="hero__name">${element.name}</div>
+                <div class="hero__name large"><b>${element.name}</b> (${element.date})</div>
                 <button onclick="showDialog(${element.id})" class="hero__button ${color}">Ver</button>
             </div>
         </div>
         `;
     }
-};
-
-const showBody = () => {
-    marvelTitle.style.display = 'grid';
-    heroeMarvel.style.display = 'grid';
-    dcTitle.style.display = 'grid';
-    heroeDC.style.display = 'grid';
 };
 
 const showResults = (valueSelect, valueInput, filteredArray, filteredArrayM, filteredArrayD) => {
